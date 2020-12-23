@@ -13,6 +13,7 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   line-height: 1.5;
+
   background-color: rgb(221, 216, 216);
   background-image: url('./images/map.jpg');
   background-repeat: no-repeat;
@@ -38,20 +39,26 @@ img {
 }
 .search-title {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 26px;
   text-align: center;
 }
 .input_search {
   width: 230px;
   height: 30px;
+  display: flex;
+  align-items: center;
   border-radius: 3px;
 }
 .container {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
-  /* padding: 8px;
-  margin-bottom: 24px; */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.input_search {
+  margin-left: auto;
+  margin-right: auto;
+}
+.coutry-desc {
+  margin-right: 50px;
 }
 .coutry-desc span {
   font-weight: 400;
@@ -60,13 +67,24 @@ img {
   font-size: 24px;
 }
 .flag-image {
-  max-width: 400px;
+  max-width: 300px;
   height: auto;
 }
 .country-title {
-  font-size: 34px;
+  text-align: center;
+  font-size: 32px;
 }
 .country-title__small {
   max-width: 600px;
   font-size: 24px;
+}
+.country-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+.list-countries {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
