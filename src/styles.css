@@ -24,6 +24,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+h2 {
+  margin: 0;
+}
 .list {
   padding: 0;
   margin: 0;
@@ -56,6 +59,7 @@ img {
 .input_search {
   margin-left: auto;
   margin-right: auto;
+  padding-left: 10px;
 }
 .coutry-desc {
   margin-right: 50px;
@@ -68,9 +72,10 @@ img {
 }
 .flag-image {
   max-width: 300px;
-  height: auto;
+  max-height: 200px;
 }
 .country-title {
+  margin-top: 0;
   text-align: center;
   font-size: 32px;
 }
@@ -81,10 +86,22 @@ img {
 .country-container {
   display: flex;
   justify-content: center;
-  align-items: stretch;
+}
+
+.articles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
 }
 .list-countries {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  right: 20px;
+  margin: 0;
+}
+.languages-list {
+  margin: 0;
+}
+.country-title__small {
+  margin: 0;
 }

@@ -1,33 +1,31 @@
 import articlesTemplate from '../templates/articles.hbs';
 import articleTemplate from '../templates/article.hbs';
 
+import getRefs from './refs';
+
 import toastr from 'toastr';
 import options from './toastr.options';
 import 'toastr/build/toastr.min.css';
+
 toastr.options = options;
 
-const refs = {
-  input: document.querySelector('#js-input'),
-  container: document.querySelector('.js-article-container'),
-};
+const refs = getRefs();
 
-refs.input.addEventListener('change', onSearch);
-
-function onSearch(e) {
-  // e.preventDefault();
-
-  console.log(e.currentTarget.value);
-
-  fetchCountries(e.currentTarget.value);
-}
-// let name = 'ukrai';
 export default function fetchCountries(searchQuery) {
-  console.log();
+  searchQuery = searchQuery.trim();
+  console.log(searchQuery);
   const url = `https://restcountries.eu/rest/v2/name/${searchQuery}`;
   return fetch(url)
-    .then(response => response.json())
+    .then(res => {
+      if (res.status === 404) {
+        console.log('404', searchQuery);
+        refs.container.innerHTML = '';
+        toastr.warning('Please enter a more specific querry!', 'Warning!');
+      } else {
+        return res.json();
+      }
+    })
     .then(data => {
-      console.log('data', data);
       if (data.length === 1) {
         const markup = articleTemplate(data);
         refs.container.innerHTML = markup;
@@ -35,8 +33,12 @@ export default function fetchCountries(searchQuery) {
         const markup = articlesTemplate(data);
         refs.container.innerHTML = markup;
       } else {
-        toastr.error('Please enter a more specific querry!', 'Warning!');
+        toastr.warning('Please enter a more specific querry!', 'Warning!');
+        refs.container.innerHTML = '';
       }
     })
-    .catch(error => toastr.error(error.message, 'ERROR!'));
+    .catch(error => {
+      // toastr.error(error.message, 'ERROR!');
+      console.log('ERROR!: ', error.message);
+    });
 }
