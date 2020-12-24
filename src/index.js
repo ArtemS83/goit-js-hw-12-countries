@@ -16,4 +16,8 @@ refs.input.addEventListener(
 
 function onValueSearch(event) {
   valueSearch = event.currentTarget.value;
+  if (valueSearch === '') {
+    return refs.spinner.classList.add('is-hidden');
+  }
+  refs.spinner.classList.remove('is-hidden');
 }
