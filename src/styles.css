@@ -112,6 +112,7 @@ h2 {
   margin: 0;
 }
 .country-title__small {
+  cursor: pointer;
   margin: 0;
 }
 .is-hidden {

@@ -35,6 +35,7 @@ export default function fetchCountries(searchQuery) {
         refs.spinner.classList.add('is-hidden');
         const markup = articlesTemplate(data);
         refs.container.innerHTML = markup;
+        render(data); //ссылки для быстрого перехода
         return;
       }
 
@@ -46,4 +47,20 @@ export default function fetchCountries(searchQuery) {
       refs.spinner.classList.add('is-hidden');
       console.log('ERROR!: ', error.message);
     });
+}
+//====================Добавлена возможность перехода по ссылке=========//
+
+function render(arr) {
+  arr.forEach(el => {
+    const itemCountryRef = document.querySelector(`.${el.alpha3Code}`);
+    itemCountryRef.addEventListener('click', renderCountry);
+    function renderCountry() {
+      refs.spinner.classList.remove('is-hidden');
+      const dataMarkup = [el];
+      const markup = articleTemplate(dataMarkup);
+      refs.spinner.classList.add('is-hidden');
+      refs.container.innerHTML = markup;
+      return;
+    }
+  });
 }
